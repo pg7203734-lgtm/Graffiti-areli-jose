@@ -1,0 +1,17 @@
+/* styles.css — parallax layers using the same source image (separable later if you prefer real cut layers) */
+:root{--w:800px;--h:600px}
+*{box-sizing:border-box}
+body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#111}
+.stage{width:var(--w);height:var(--h);position:relative;overflow:hidden;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.6);background:#000}
+.layer{position:absolute;inset:0;background-image:url('../file_0000000079b471f8833d467dffa4a668.png');background-size:cover;background-position:center center;transform-origin:center center;transition:transform .12s linear}
+#layer-back{filter:blur(2px) saturate(.9) brightness(.9);transform:scale(1.05)}
+#layer-mid{filter:contrast(1.02) saturate(1.05)}
+#layer-front{filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));mix-blend-mode:normal}
+
+/* subtle floating animation so the GIF isn't static */
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+.layer{animation:floaty 6s ease-in-out infinite}
+
+/* responsive */
+@media (max-width:900px){:root{--w:640px;--h:480px}}
+@media (max-width:700px){:root{--w:420px;--h:320px}}
